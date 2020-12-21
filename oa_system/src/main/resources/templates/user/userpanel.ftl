@@ -111,7 +111,7 @@ h1, h3 {
 				<#if user.imgPath?? && user.imgPath!=''  >
 				<img style="width: 110px;height: 110px;"
 					class="profile-user-img img-responsive img-circle"
-					src="/image/${user.imgPath}" />
+					src="/images/${user.imgPath}" />
 				<#else>
 				<img style="width: 110px;height: 110px;"
 					class="profile-user-img img-responsive img-circle"

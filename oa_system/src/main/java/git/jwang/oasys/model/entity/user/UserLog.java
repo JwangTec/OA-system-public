@@ -1,96 +1,95 @@
 package git.jwang.oasys.model.entity.user;
 
-import javax.persistence.*;
 import java.util.Date;
 
-/**
- * @PROJECT_NAME: oa_system
- * @DESCRIPTION:
- * @USER: jwang
- * @DATE: 2020/12/19 下午3:13
- */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "aoa_user_log")
 public class UserLog {
-    @Id
-    @Column(name = "log_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;	//logid
 
-    @Column(name = "ip_addr")
-    private String ipAddr;	//ip地址
+	@Id
+	@Column(name = "log_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;	//logid
+	
+	@Column(name = "ip_addr")
+	private String ipAddr;	//ip地址
+	
+	private String title;	//操作菜单名字
+	
+	private String url;		//操作菜单url
+	
+	@Column(name = "log_time")
+	private Date logTime;	//日志记录时间
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
-    private String title;	//操作菜单名字
+	public UserLog() {
 
-    private String url;		//操作菜单url
+	}
 
-    @Column(name = "log_time")
-    private Date logTime;	//日志记录时间
+	public Long getId() {
+		return id;
+	}
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public UserLog() {
-    }
+	public String getIpAddr() {
+		return ipAddr;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setIpAddr(String ipAddr) {
+		this.ipAddr = ipAddr;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public String getIpAddr() {
-        return ipAddr;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public void setIpAddr(String ipAddr) {
-        this.ipAddr = ipAddr;
-    }
+	public String getUrl() {
+		return url;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public Date getLogTime() {
+		return logTime;
+	}
 
-    public String getUrl() {
-        return url;
-    }
+	public void setLogTime(Date logTime) {
+		this.logTime = logTime;
+	}
+	
+	public User getUser() {
+		return user;
+	}
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-    public Date getLogTime() {
-        return logTime;
-    }
+	@Override
+	public String toString() {
+		return "UserLog [id=" + id + ", ipAddr=" + ipAddr + ", title=" + title + ", url=" + url + ", logTime=" + logTime
+				+ "]";
+	}
 
-    public void setLogTime(Date logTime) {
-        this.logTime = logTime;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "UserLog{" +
-                "id=" + id +
-                ", ipAddr='" + ipAddr + '\'' +
-                ", title='" + title + '\'' +
-                ", url='" + url + '\'' +
-                ", logTime=" + logTime +
-                '}';
-    }
 }

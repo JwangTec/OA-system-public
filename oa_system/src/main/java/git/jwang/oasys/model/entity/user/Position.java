@@ -1,82 +1,88 @@
 package git.jwang.oasys.model.entity.user;
 
-import javax.persistence.*;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 /**
- * @PROJECT_NAME: oa_system
- * @DESCRIPTION: 职位信息
- * @USER: jwang
- * @DATE: 2020/12/19 下午3:02
+ * 职位类
+ * @author Administrator
+ *
  */
-
 @Entity
 @Table(name = "aoa_position")
 public class Position {
-    @Id
-    @Column(name = "position_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;	//职位id
 
-    @Column(unique = true)
-    private String name;	//职位名称。
+	@Id
+	@Column(name = "position_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;	//职位id
+	
+	@Column(unique = true)
+	private String name;	//职位名称。
+	
+	private Integer level;	//职位层级
+	
+	private String describtion;//职位描述
+	
+	private Long deptid;
 
-    private Integer level;	//职位层级
+	public Position() {
 
-    private String describtion;//职位描述
+	}
+	
+	public Position(String name, Integer level) {
+		
+		this.name = name;
+		this.level = level;
+	}
 
-    private Long deptid;
+	public Long getId() {
+		return id;
+	}
 
-    public Position() {
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Integer getLevel() {
+		return level;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
+	
+	public String getDescribtion() {
+		return describtion;
+	}
 
-    public Integer getLevel() {
-        return level;
-    }
+	public void setDescribtion(String describtion) {
+		this.describtion = describtion;
+	}
 
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
+	public Long getDeptid() {
+		return deptid;
+	}
 
-    public String getDescribtion() {
-        return describtion;
-    }
+	public void setDeptid(Long deptid) {
+		this.deptid = deptid;
+	}
 
-    public void setDescribtion(String describtion) {
-        this.describtion = describtion;
-    }
-
-    public Long getDeptid() {
-        return deptid;
-    }
-
-    public void setDeptid(Long deptid) {
-        this.deptid = deptid;
-    }
-
-    @Override
-    public String toString() {
-        return "Position{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", level=" + level +
-                ", describtion='" + describtion + '\'' +
-                ", deptid=" + deptid +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "Position [id=" + id + ", name=" + name + ", level=" + level + ", describtion=" + describtion
+				+ ", deptid=" + deptid + "]";
+	}
+	
 }
